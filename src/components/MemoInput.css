@@ -1,0 +1,123 @@
+.memo-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 1rem auto;
+}
+
+.memo-toggle {
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: inherit;
+}
+
+.memo-toggle:hover {
+  background-color: var(--secondary-bg-hover);
+}
+
+.memo-panel {
+  margin-top: 0.5rem;
+  padding: 1rem;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.memo-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.memo-input {
+  flex: 1;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: inherit;
+  outline: none;
+}
+
+.memo-input:focus {
+  border-color: var(--focus-color);
+}
+
+.memo-add-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  background-color: var(--focus-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.memo-add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.memo-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0.5rem;
+}
+
+.memo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--input-bg);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.memo-text {
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.memo-remove-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1;
+  background-color: transparent;
+  color: var(--text-muted);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.memo-remove-btn:hover {
+  background-color: var(--reset-color);
+  color: white;
+}
+
+.memo-clear-btn {
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 0.8rem;
+  background-color: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.memo-clear-btn:hover {
+  background-color: var(--reset-color);
+  color: white;
+  border-color: var(--reset-color);
+}
