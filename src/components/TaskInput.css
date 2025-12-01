@@ -1,0 +1,52 @@
+.task-input-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.task-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.task-form {
+  width: 100%;
+}
+
+.task-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  color: inherit;
+  text-align: center;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.task-input:focus {
+  border-color: var(--focus-color);
+}
+
+.task-display {
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.8;
+}
+
+.task-display:hover {
+  background-color: var(--input-bg-hover);
+  opacity: 1;
+}
