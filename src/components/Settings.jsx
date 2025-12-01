@@ -5,6 +5,8 @@ import { ALARM_SOUNDS, playAlarm } from '../utils/notifications';
 import { getWeekDayShort } from '../utils/timeFormat';
 import './Settings.css';
 
+const DAYS_OF_WEEK = [0, 1, 2, 3, 4, 5, 6];
+
 const Settings = ({ isOpen, onClose }) => {
   const { state, dispatch } = usePomodoro();
   const [activeTab, setActiveTab] = useState('timer');
@@ -181,7 +183,7 @@ const Settings = ({ isOpen, onClose }) => {
                   value={newTaskDay}
                   onChange={e => setNewTaskDay(parseInt(e.target.value))}
                 >
-                  {[0, 1, 2, 3, 4, 5, 6].map(day => (
+                  {DAYS_OF_WEEK.map(day => (
                     <option key={day} value={day}>{getWeekDayShort(day)}</option>
                   ))}
                 </select>
@@ -195,7 +197,7 @@ const Settings = ({ isOpen, onClose }) => {
                 <button type="button" onClick={handleAddPersonalTask}>追加</button>
               </div>
               <div className="personal-tasks-list">
-                {[0, 1, 2, 3, 4, 5, 6].map(day => (
+                {DAYS_OF_WEEK.map(day => (
                   tempPersonalTasks[day]?.length > 0 && (
                     <div key={day} className="personal-tasks-day">
                       <h4>{getWeekDayShort(day)}</h4>

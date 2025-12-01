@@ -44,7 +44,9 @@ const Statistics = ({ isOpen, onClose }) => {
     };
   }, [state.logs]);
 
-  const maxMinutes = Math.max(...weekStats.dailyData.map(d => d.minutes), 1);
+  const maxMinutes = useMemo(() => {
+    return weekStats.dailyData.reduce((max, d) => Math.max(max, d.minutes), 1);
+  }, [weekStats.dailyData]);
 
   if (!isOpen) return null;
 

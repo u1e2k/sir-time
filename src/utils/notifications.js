@@ -35,8 +35,15 @@ export const showNotification = (title, options = {}) => {
   }
 };
 
-// Audio playback
-const audioContext = typeof AudioContext !== 'undefined' ? new AudioContext() : null;
+// Audio playback - create lazily to handle browser autoplay policies
+let audioContext = null;
+
+const getAudioContext = () => {
+  if (!audioContext && typeof AudioContext !== 'undefined') {
+    audioContext = new AudioContext();
+  }
+  return audioContext;
+};
 
 export const ALARM_SOUNDS = {
   bell: {
@@ -62,7 +69,8 @@ export const ALARM_SOUNDS = {
 };
 
 export const playAlarm = (alarmType = 'bell') => {
-  if (!audioContext) {
+  const ctx = getAudioContext();
+  if (!ctx) {
     console.log('AudioContext not supported');
     return;
   }
@@ -70,21 +78,21 @@ export const playAlarm = (alarmType = 'bell') => {
   const alarm = ALARM_SOUNDS[alarmType] || ALARM_SOUNDS.bell;
   
   // Resume context if suspended
-  if (audioContext.state === 'suspended') {
-    audioContext.resume();
+  if (ctx.state === 'suspended') {
+    ctx.resume();
   }
 
   alarm.frequency.forEach((freq, index) => {
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
 
     oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
+    gainNode.connect(ctx.destination);
 
     oscillator.frequency.value = freq;
     oscillator.type = 'sine';
 
-    const startTime = audioContext.currentTime + index * alarm.duration;
+    const startTime = ctx.currentTime + index * alarm.duration;
     const endTime = startTime + alarm.duration;
 
     gainNode.gain.setValueAtTime(0.3, startTime);
